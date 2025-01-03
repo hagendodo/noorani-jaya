@@ -1,0 +1,23 @@
+created:
+    - database/factories/TypeFactory.php
+    - database/factories/MaterialFactory.php
+    - database/factories/DesignFactory.php
+    - database/factories/OrderFactory.php
+    - database/factories/OrderStatusFactory.php
+    - database/migrations/2025_01_03_213506_create_types_table.php
+    - database/migrations/2025_01_03_213507_create_materials_table.php
+    - database/migrations/2025_01_03_213508_create_designs_table.php
+    - database/migrations/2025_01_03_213509_create_orders_table.php
+    - database/migrations/2025_01_03_213510_create_order_statuses_table.php
+    - app/Models/Type.php
+    - app/Models/Material.php
+    - app/Models/Design.php
+    - app/Models/Order.php
+    - app/Models/OrderStatus.php
+models:
+    User: { name: string, email: string, email_verified_at: 'timestamp nullable', password: string, remember_token: 'string:100 nullable' }
+    Type: { name: 'string:512' }
+    Material: { type_id: 'id foreign', name: 'string:2048' }
+    Design: { user_id: 'id foreign', title: 'string:512', file: 'string:2048', type_id: 'id foreign', material_id: 'id foreign', date_insert: datetime, deadline: datetime, notes: text }
+    Order: { user_id: 'id foreign', design_id: 'id foreign', order_type: 'string:100', payment_type: 'string:100' }
+    OrderStatus: { user_id: 'id foreign', order_id: 'id foreign', status: 'string:50' }

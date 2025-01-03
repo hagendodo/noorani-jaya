@@ -1,0 +1,28 @@
+models:
+  Type:
+    name: string:512
+
+  Material:
+    type_id: id foreign
+    name: string:2048
+
+  Design:
+    user_id: id foreign
+    title: string:512
+    file: string:2048
+    type_id: id foreign
+    material_id: id foreign
+    date_insert: datetime
+    deadline: datetime
+    notes: text
+
+  Order:
+    user_id: id foreign
+    design_id: id foreign
+    order_type: string:100
+    payment_type: string:100
+
+  OrderStatus:
+    user_id: id foreign
+    order_id: id foreign
+    status: string:50
