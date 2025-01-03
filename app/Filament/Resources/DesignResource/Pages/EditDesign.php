@@ -5,6 +5,7 @@ namespace App\Filament\Resources\DesignResource\Pages;
 use App\Filament\Resources\DesignResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
+use Illuminate\Support\Facades\Auth;
 
 class EditDesign extends EditRecord
 {
@@ -15,5 +16,12 @@ class EditDesign extends EditRecord
         return [
             Actions\DeleteAction::make(),
         ];
+    }
+
+    protected function mutateFormDataBeforeSave(array $data): array
+    {
+        $data['user_id'] = Auth::id();
+    
+        return $data;
     }
 }
